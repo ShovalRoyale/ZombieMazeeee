@@ -24,10 +24,10 @@ public class Player extends Entity{
         screenX = gp.screenWidth/2 - (gp.tileSize/2);
         screenY = gp.screenHeight/2 - (gp.tileSize/2);
 
-        solidArea = new Rectangle(8,16, 32,32);
-//        solidArea = new Rectangle(this.worldX + this.solidArea.x,this.worldY + this.solidArea.y,
-//                this.worldX + this.solidArea.x + this.solidArea.width,
-//                this.worldY + this.solidArea.y + this.solidArea.height);
+        solidArea = new Rectangle(8,12, 12,12);
+        solidArea = new Rectangle(this.worldX + this.solidArea.x,this.worldY + this.solidArea.y,
+                this.worldX + this.solidArea.x + this.solidArea.width,
+                this.worldY + this.solidArea.y + this.solidArea.height);
 
         setDefaultValues();
         getPlayerImage();
@@ -126,8 +126,29 @@ public class Player extends Entity{
                         break;
                 }
             }
+            if(this.collisionOn) {
+                switch (direction) {
+                    case "up":
+                        worldY += speed;
+                        this.collisionOn = false;
+                        break;
+                    case "down":
+                        worldY -= speed;
+                        this.collisionOn = false;
+                        break;
+                    case "left":
+                        worldX += speed;
+                        this.collisionOn = false;
+                        break;
+                    case "right":
+                        worldX -= speed;
+                        this.collisionOn = false;
+                        break;
+                }
+            }
 
-            spriteCounter++;
+
+                        spriteCounter++;
             if(spriteCounter > 12){
                 if(spriteNum == 1){
                     spriteNum = 2;

@@ -24,7 +24,7 @@ public class TileManager {
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
 
         getTileImage();
-        loadMap("/maps/bigMap.txt");
+        loadMap("/maps/maze.txt");
     }
 
     public void getTileImage(){
@@ -33,6 +33,9 @@ public class TileManager {
 
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/images/Grass.png"));
+
+            tile[3] = new Tile();
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/images/Win.png"));
 
             tile[1] = new Tile();
             tile[1].image = ImageIO.read(getClass().getResourceAsStream("/images/Bricks.png"));
@@ -95,13 +98,14 @@ public class TileManager {
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
 
-            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                    worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                    worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                    worldY - gp.tileSize < gp.player.worldY + gp.player.screenY ){
-
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-        }
+//            if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+//                    worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+//                    worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+//                    worldY - gp.tileSize < gp.player.worldY + gp.player.screenY ){
+//
+//
+//        }
+            g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
             worldCol++;
 
             if(worldCol == gp.maxScreenCol){

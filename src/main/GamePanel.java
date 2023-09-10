@@ -5,6 +5,7 @@ import entity.Player;
 import tile.TileManager;
 
 import java.awt.*;
+import java.beans.Customizer;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable{
@@ -14,24 +15,29 @@ public class GamePanel extends JPanel implements Runnable{
     final int scale = 3;
 
     public final int tileSize = originalTileSize * scale; // 48x48 בגודל
-    public final int maxScreenCol = 26;
-    public final int maxScreenRow = 16;
+    public final int maxScreenCol = 66;
+    public final int maxScreenRow = 28;
     public final int screenWidth = tileSize * (maxScreenCol-12); // 768 פיקסלים
     public final int screenHeight = tileSize * (maxScreenRow-7); // 576 פיקסלים
 
     // הגדרות עולם
-    public final int maxWorldCol = 50;
-    public final int maxWorldRow = 50;
+    public final int maxWorldCol = 66;
+    public final int maxWorldRow = 66;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int worldHeight = tileSize * maxWorldRow;
 
     // FPS
     int FPS = 60;
 
+    //System
     TileManager tileM = new TileManager(this);
     KeyHandler keyH = new KeyHandler();
+    Sound sound = new Sound();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
+    Thread getGameThread;
+
+    //Entity
     public Player player = new Player(this,keyH);
 
     public  GamePanel() {
@@ -42,6 +48,12 @@ public class GamePanel extends JPanel implements Runnable{
         this.setFocusable(true);
 
     }
+//    public void setupGame() {
+//        aSetter.setObject();{
+//
+//            playMusic(0);
+//        }
+//    }
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
@@ -94,6 +106,21 @@ public class GamePanel extends JPanel implements Runnable{
         player.draw(g2);
 
         g2.dispose();
+    }
+    public void playMusic(int i) {
+
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+    public void stopMusic() {
+
+        sound.stop();
+    }
+    public void playSE(int i) {
+
+        sound.setFile(i);
+        sound.play();
     }
 }
 

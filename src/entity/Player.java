@@ -36,7 +36,7 @@ public class Player extends Entity{
 
         worldX = gp.tileSize * 12;
         worldY = gp.tileSize * 10;
-        speed = 4;
+        speed = 10;
         direction = "down";
     }
     public void getPlayerImage(){
@@ -62,10 +62,10 @@ public class Player extends Entity{
     }
     public void update(){
 
-        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=50||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=50){
-            System.out.println("out of bounds");
-            return;
-        }
+//        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=66||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=66){
+//            System.out.println("out of bounds");
+//            return;
+//        }
         if(keyH.upPressed == true || keyH.downPressed == true ||
                 keyH.leftPressed == true || keyH.rightPressed == true){
 
@@ -94,35 +94,35 @@ public class Player extends Entity{
                 switch(direction){
                     case "up":
                         worldY -= speed;
-                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=50||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=50){
-                            System.out.println("out of bounds");
-                            worldY += speed;
-                            return;
-                        }
+//                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=gp.maxWorldCol||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=gp.maxWorldRow){
+//                            System.out.println("out of bounds");
+//                            worldY += speed;
+//                            return;
+//                        }
                         break;
                     case "down":
                         worldY += speed;
-                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=50||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=50){
-                            System.out.println("out of bounds");
-                            worldY -= speed;
-                            return;
-                        }
+//                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=gp.maxWorldCol||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=gp.maxWorldRow){
+//                            System.out.println("out of bounds");
+//                            worldY -= speed;
+//                            return;
+//                        }
                         break;
                     case "left":
                         worldX -= speed;
-                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=50||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=50){
-                            System.out.println("out of bounds");
-                            worldX += speed;
-                            return;
-                        }
+//                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=gp.maxWorldCol||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=gp.maxWorldRow){
+//                            System.out.println("out of bounds");
+//                            worldX += speed;
+//                            return;
+//                        }
                         break;
                     case "right":
                         worldX += speed;
-                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=50||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=50){
-                            System.out.println("out of bounds");
-                            worldX -= speed;
-                            return;
-                        }
+//                        if ((worldX/gp.tileSize)<0||(worldX/gp.tileSize)>=gp.maxWorldCol||(worldY/gp.tileSize)<0||(worldY/gp.tileSize)>=gp.maxWorldRow){
+//                            System.out.println("out of bounds");
+//                            worldX -= speed;
+//                            return;
+//                        }
                         break;
                 }
             }
